@@ -33,7 +33,7 @@ namespace UnifiedAvatarOSC
 
         public void Activate(IUnifiedAvatarOSC osc)
         {
-            provider.Intialize(osc);
+            provider.Initialize(osc);
             active = true;
         }
 

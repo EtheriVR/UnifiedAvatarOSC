@@ -16,7 +16,7 @@
         /// Initialize runs when the provider is loaded (if avatar defenition contains it's parameter address)
         /// </summary>
         /// /// <param name="osc">osc interface used to send data</param>
-        void Intialize(IUnifiedAvatarOSC osc);
+        void Initialize(IUnifiedAvatarOSC osc);
         
         /// <summary>
         /// Runs when the provider unloaded (if avatar definition no longer requires the parameter)

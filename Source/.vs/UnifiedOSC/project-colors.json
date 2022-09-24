@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "5f2259e1-3521-4bfe-84fd-fddacaf76eca": {
+      "ProjectGuid": "5f2259e1-3521-4bfe-84fd-fddacaf76eca",
+      "DisplayName": "ExampleModule",
+      "ColorIndex": 0
+    },
+    "9c66bf9b-1008-40ea-ab8e-d6cedbebd74a": {
+      "ProjectGuid": "9c66bf9b-1008-40ea-ab8e-d6cedbebd74a",
+      "DisplayName": "UnifiedAvatarOSCBase",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "d45c4272-d84f-4f07-a211-c7455ce4bc0f": {
+      "ProjectGuid": "d45c4272-d84f-4f07-a211-c7455ce4bc0f",
+      "DisplayName": "UnifiedAvatarOSC",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}

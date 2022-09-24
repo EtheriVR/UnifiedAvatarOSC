@@ -22,7 +22,7 @@ namespace ExampleModule
         /// Runs when the provider gets loaded by the app
         /// </summary>
         /// <param name="osc"></param>
-        public void Intialize(IUnifiedAvatarOSC osc)
+        public void Initialize(IUnifiedAvatarOSC osc)
         {
             osc.Send("This is data!", TestAddress2, this);
         }
