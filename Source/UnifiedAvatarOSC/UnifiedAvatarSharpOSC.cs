@@ -15,7 +15,6 @@ namespace UnifiedAvatarOSC
     {
         UDPTransmitter client = null;
         UDPReceiver server = null;
-        string basePrefix = "";
 
         public delegate void AvatarIdHandler(string avatarId);
         public delegate void RecievedMessageHandler(string address, IList<object> args);
@@ -24,14 +23,13 @@ namespace UnifiedAvatarOSC
         public event RecievedMessageHandler OnOscMessage;
 
 
-        public UnifiedAvatarSharpOSC(string address, int sendPort, int recieve, string basePrefix)
+        public UnifiedAvatarSharpOSC(string address, int sendPort, int recieve)
         {
             client = new UDPTransmitter(address, sendPort);
             client.Connect();
             server = new UDPReceiver(recieve,false);
             server.Start();
             server.PacketReceived += Server_PacketReceived;
-            this.basePrefix = basePrefix;
         }
 
         private void Server_PacketReceived(object sender, OscPacketReceivedEventArgs e)
@@ -59,7 +57,9 @@ namespace UnifiedAvatarOSC
 
         public void Send(object input, string ParameterAddress, IUnifiedAvatarOSCProvider provider)
         {
-            var message = new OscMessage(basePrefix + ParameterAddress, input);
+            CheckAddress(ref ParameterAddress);
+
+            var message = new OscMessage(ParameterAddress, input);
             client.Send(message);
             Log.Send(ParameterAddress, input.ToString(), provider.ProviderName);
         }
@@ -68,7 +68,10 @@ namespace UnifiedAvatarOSC
         {
             var addresses = provider.GetType().GetCustomAttribute<Parameters>(true).Addresses;
             var address = addresses.FirstOrDefault();
-            var message = new OscMessage(basePrefix + address, input);
+
+            CheckAddress(ref address);
+
+            var message = new OscMessage(address, input);
             client.Send(message);
 
             Log.Send(address, input.ToString(), provider.ProviderName);
@@ -80,9 +83,17 @@ namespace UnifiedAvatarOSC
 
         public void SendAbsolutePath(object input, string ParameterAddress, IUnifiedAvatarOSCProvider provider)
         {
+            CheckAddress(ref ParameterAddress);
             var message = new OscMessage(ParameterAddress, input);
+
             client.Send(message);
             Log.Send(ParameterAddress, input.ToString(), provider.ProviderName);
+        }
+
+        private void CheckAddress(ref string address)
+        {
+            if (address.First() != '/')
+                address = '/' + address;
         }
     }
 }

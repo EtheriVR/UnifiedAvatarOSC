@@ -22,7 +22,7 @@ namespace UnifiedAvatarOSC
         {
             InitializeComponent();
             logManager = new LogManager(logTextBox);
-            avatarOsc = new UnifiedAvatarSharpOSC("127.0.0.1", 9000,9001, "/avatar/parameters/UnifiedOSC/");
+            avatarOsc = new UnifiedAvatarSharpOSC("127.0.0.1", 9000,9001);
             avatarOsc.OnAvatarChanged += Server_OnAvatarChanged;
             avatarOsc.OnOscMessage += AvatarOsc_OnOscMessage;
             providerManager.LoadProviders();

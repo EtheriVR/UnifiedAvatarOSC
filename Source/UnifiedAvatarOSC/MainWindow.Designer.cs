@@ -38,6 +38,7 @@
             this.trayIconStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.OpenModulesFolderBtn = new System.Windows.Forms.Button();
             this.hideOnStartup = new System.Windows.Forms.CheckBox();
             this.loadAllModulesBtn = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -46,7 +47,6 @@
             this.loadedModules = new System.Windows.Forms.ListBox();
             this.uiUpdater = new System.Windows.Forms.Timer(this.components);
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.OpenModulesFolderBtn = new System.Windows.Forms.Button();
             updateIntervalAndLabel = new System.Windows.Forms.FlowLayoutPanel();
             updateIntervalAndLabel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.updateInterval)).BeginInit();
@@ -131,6 +131,14 @@
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
+            // OpenModulesFolderBtn
+            // 
+            this.OpenModulesFolderBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            resources.ApplyResources(this.OpenModulesFolderBtn, "OpenModulesFolderBtn");
+            this.OpenModulesFolderBtn.Name = "OpenModulesFolderBtn";
+            this.OpenModulesFolderBtn.UseVisualStyleBackColor = true;
+            this.OpenModulesFolderBtn.Click += new System.EventHandler(this.OpenModulesFolderBtn_Click);
+            // 
             // hideOnStartup
             // 
             resources.ApplyResources(this.hideOnStartup, "hideOnStartup");
@@ -194,14 +202,6 @@
             this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
             resources.ApplyResources(this.imageList1, "imageList1");
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // OpenModulesFolderBtn
-            // 
-            this.OpenModulesFolderBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            resources.ApplyResources(this.OpenModulesFolderBtn, "OpenModulesFolderBtn");
-            this.OpenModulesFolderBtn.Name = "OpenModulesFolderBtn";
-            this.OpenModulesFolderBtn.UseVisualStyleBackColor = true;
-            this.OpenModulesFolderBtn.Click += new System.EventHandler(this.OpenModulesFolderBtn_Click);
             // 
             // MainWindow
             // 

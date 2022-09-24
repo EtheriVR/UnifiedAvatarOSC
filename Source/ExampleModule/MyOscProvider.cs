@@ -5,9 +5,15 @@ using UnifiedAvatarOSCBase;
 
 namespace ExampleModule
 {
-    [Parameters("CoolParameter", "ParameterAddress", "ParameterAddress2")]
+    [Parameters(TestAddress1, TestAddress2, TestCallbackParameter, TestCallbackParameter2)]
     public class MyOscProvider : IUnifiedAvatarOSCProvider
     {
+        public const string TestAddress1 = "/avatar/parameters/ExampleModule/TestParam";
+        public const string TestAddress2 = "/avatar/parameters/ExampleModule/TestParam2";
+
+        public const string TestCallbackParameter = "/avatar/parameters/ExampleModule/ExampleCallback";
+        public const string TestCallbackParameter2 = "/avatar/parameters/ExampleModule/ExampleCallback2";
+
         public string ProviderName => "MyProviderName";
 
         public long UpdateRate => 1000; //How many milliseconds between each update
@@ -18,7 +24,7 @@ namespace ExampleModule
         /// <param name="osc"></param>
         public void Intialize(IUnifiedAvatarOSC osc)
         {
-            osc.Send("This is data!", "Avatar/Params/Address", this);
+            osc.Send("This is data!", TestAddress2, this);
         }
 
         /// <summary>
@@ -34,7 +40,7 @@ namespace ExampleModule
         /// <param name="address">the address the message was sent to</param>
         /// <param name="data">the data provided</param>
         
-        [OSCCallback("ParameterAddress","ParameterAddress2")]
+        [OSCCallback(TestCallbackParameter, TestCallbackParameter2)]
         private void MyReceivingMethod(string address,IList<object> data)
         {
             Console.WriteLine("{0} Got Message: {1}", address,data[0].ToString());
@@ -44,8 +50,8 @@ namespace ExampleModule
 
         public void Update(IUnifiedAvatarOSC osc, float deltaTime)
         {
-            //Send a cool value to the declared address
-            osc.Send(1337.0f, this);
+            //Send a cool value to the first declared address
+            osc.Send(1337.0f, TestAddress1, this);
         }
     }
 }
